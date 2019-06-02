@@ -1,3 +1,4 @@
+import $ from 'jquery';
 export class HungryBear {
 
   constructor(name)
@@ -7,10 +8,19 @@ export class HungryBear {
   }
 
   setHunger(){
-    setInterval(()=>{
-      this.foodLevel --;
 
-    },1000);
+    setInterval(()=>{
+      if(this.foodLevel>0)
+      {
+        this.foodLevel --;
+        $("#foodlevel").text(this.foodLevel);
+        if(this.didYouGetEaten()){
+          $("#hunger").text("I am hungry bear! feed me! ");
+        }
+      }
+
+    },100);
+
   }
 
   didYouGetEaten(){
